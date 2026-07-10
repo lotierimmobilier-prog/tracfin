@@ -5,18 +5,24 @@ export const BACKUP_SOURCE = 'tracfin-kyc-full';
 
 // All tables included in a full backup, in dependency order for restore
 export const BACKUP_TABLES = [
-  { name: 'users',                    label: 'Utilisateurs',              restoreVia: 'edge_function' },
-  { name: 'clients',                  label: 'Clients KYC',               restoreVia: 'supabase' },
-  { name: 'beneficial_owners',        label: 'Bénéficiaires effectifs',   restoreVia: 'supabase' },
-  { name: 'transactions',             label: 'Transactions',              restoreVia: 'supabase' },
-  { name: 'compliance_dossiers',      label: 'Dossiers conformité',       restoreVia: 'supabase' },
-  { name: 'alerts',                   label: 'Alertes',                   restoreVia: 'supabase' },
-  { name: 'tracfin_declarations',     label: 'Déclarations TRACFIN',      restoreVia: 'supabase' },
-  { name: 'risk_assessments',         label: 'Évaluations de risque',     restoreVia: 'supabase' },
-  { name: 'tracfin_internal_register',label: 'Registre interne TRACFIN',  restoreVia: 'supabase' },
-  { name: 'signatures',               label: 'Signatures',                restoreVia: 'supabase' },
-  { name: 'documents',                label: 'Documents (métadonnées)',   restoreVia: 'supabase' },
-  { name: 'audit_logs',               label: 'Journaux d\'audit',         restoreVia: 'supabase' },
+  { name: 'users',                     label: 'Utilisateurs',              restoreVia: 'edge_function' },
+  { name: 'agency_settings',           label: 'Paramètres agence',         restoreVia: 'supabase' },
+  { name: 'page_permissions',          label: 'Permissions pages',         restoreVia: 'supabase' },
+  { name: 'clients',                   label: 'Clients KYC',               restoreVia: 'supabase' },
+  { name: 'beneficial_owners',         label: 'Bénéficiaires effectifs',   restoreVia: 'supabase' },
+  { name: 'transactions',              label: 'Transactions',              restoreVia: 'supabase' },
+  { name: 'transaction_risk_answers',  label: 'Réponses questionnaire',    restoreVia: 'supabase' },
+  { name: 'compliance_dossiers',       label: 'Dossiers conformité',       restoreVia: 'supabase' },
+  { name: 'alerts',                    label: 'Alertes',                   restoreVia: 'supabase' },
+  { name: 'tracfin_declarations',      label: 'Déclarations TRACFIN',      restoreVia: 'supabase' },
+  { name: 'tracfin_internal_register', label: 'Registre interne TRACFIN',  restoreVia: 'supabase' },
+  { name: 'suspicion_reports',         label: 'Rapports de suspicion',     restoreVia: 'supabase' },
+  { name: 'risk_assessments',          label: 'Évaluations de risque',     restoreVia: 'supabase' },
+  { name: 'training_attestations',     label: 'Attestations formation',    restoreVia: 'supabase' },
+  { name: 'flashcards_progress',       label: 'Progression flashcards',    restoreVia: 'supabase' },
+  { name: 'signatures',                label: 'Signatures',                restoreVia: 'supabase' },
+  { name: 'documents',                 label: 'Documents (métadonnées)',   restoreVia: 'supabase' },
+  { name: 'audit_logs',                label: 'Journaux d\'audit',         restoreVia: 'supabase' },
 ] as const;
 
 export type BackupTableName = (typeof BACKUP_TABLES)[number]['name'];
@@ -141,14 +147,20 @@ export interface RestoreResult {
 // Tables that reference users.id (agent_id / created_by / etc.)
 // On restore we skip re-creating user auth accounts; existing ids must match.
 const TABLES_RESTORE_ORDER: BackupTableName[] = [
+  'agency_settings',
+  'page_permissions',
   'clients',
   'beneficial_owners',
   'transactions',
+  'transaction_risk_answers',
   'compliance_dossiers',
   'alerts',
   'tracfin_declarations',
-  'risk_assessments',
   'tracfin_internal_register',
+  'suspicion_reports',
+  'risk_assessments',
+  'training_attestations',
+  'flashcards_progress',
   'signatures',
   'documents',
   'audit_logs',
