@@ -19,6 +19,7 @@ import { Reports } from './views/Reports';
 import { Notifications } from './views/Notifications';
 import { TracfinDeclarations } from './views/TracfinDeclarations';
 import { Profile } from './views/Profile';
+import { Backup } from './views/Backup';
 
 function AppContent() {
   const { currentView, setView } = useLocation();
@@ -75,6 +76,8 @@ function AppContent() {
         return <SignatureDemo />;
       case 'profile':
         return <Profile />;
+      case 'backup':
+        return <Backup />;
       default:
         return <Dashboard />;
     }

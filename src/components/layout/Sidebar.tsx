@@ -1,4 +1,4 @@
-import { Shield, Users, FileText, AlertTriangle, BarChart3, FolderCheck, Archive, BookOpen, UserCog, Settings, Trash2, PenTool, Clock, FileBarChart, Bell, GraduationCap, Ligature as FileSignature } from 'lucide-react';
+import { Shield, Users, FileText, AlertTriangle, BarChart3, FolderCheck, Archive, BookOpen, UserCog, Settings, Trash2, PenTool, Clock, FileBarChart, Bell, GraduationCap, Ligature as FileSignature, HardDriveDownload } from 'lucide-react';
 import { useLocation } from '../navigation/Router';
 import { useAuth } from '../../contexts/AuthContext';
 import { usePagePermissions } from '../../hooks/usePagePermissions';
@@ -53,6 +53,7 @@ export function Sidebar() {
     { id: 'permissions', icon: Settings, label: 'Permissions' },
     { id: 'audit-logs', icon: Clock, label: 'Journaux d\'Audit' },
     { id: 'signature-demo', icon: PenTool, label: 'Signature (Démo)' },
+    { id: 'backup', icon: HardDriveDownload, label: 'Sauvegarde BDD' },
   ];
 
   return (

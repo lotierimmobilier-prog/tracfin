@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-type View = 'dashboard' | 'clients' | 'transactions' | 'risk-assessments' | 'alerts' | 'dossiers' | 'archive' | 'guide' | 'users' | 'permissions' | 'signature-demo' | 'audit-logs' | 'reports' | 'notifications' | 'tutorial' | 'tracfin-declarations' | 'profile';
+type View = 'dashboard' | 'clients' | 'transactions' | 'risk-assessments' | 'alerts' | 'dossiers' | 'archive' | 'guide' | 'users' | 'permissions' | 'signature-demo' | 'audit-logs' | 'reports' | 'notifications' | 'tutorial' | 'tracfin-declarations' | 'profile' | 'backup';
 
 interface RouterContextType {
   currentView: View;
